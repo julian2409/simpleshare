@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.simpleshare.dao.UserDaoTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2018-08-01T19:00:25" hostname="NB170529JSA" time="0.438">
+  <properties/>
+  <testcase name="testSaveUser" classname="com.simpleshare.dao.UserDaoTest" time="0.062"/>
+  <testcase name="testFindUserByName" classname="com.simpleshare.dao.UserDaoTest" time="0.275"/>
+  <testcase name="testGetAllUsers" classname="com.simpleshare.dao.UserDaoTest" time="0.068"/>
+  <testcase name="testUpdateUser" classname="com.simpleshare.dao.UserDaoTest" time="0.007"/>
+  <testcase name="testFindUser" classname="com.simpleshare.dao.UserDaoTest" time="0.01"/>
+  <testcase name="testDeleteUser" classname="com.simpleshare.dao.UserDaoTest" time="0.015"/>
+  <testcase name="testGetInstance" classname="com.simpleshare.dao.UserDaoTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
