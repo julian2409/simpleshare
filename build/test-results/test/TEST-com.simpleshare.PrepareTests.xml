@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.simpleshare.PrepareTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-08-01T19:00:26" hostname="NB170529JSA" time="0.007">
+<testsuite name="com.simpleshare.PrepareTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-08-01T20:45:14" hostname="julian-ThinkPad-E550" time="0.016">
   <properties/>
-  <testcase name="clearDB" classname="com.simpleshare.PrepareTests" time="0.007"/>
+  <testcase name="clearDB" classname="com.simpleshare.PrepareTests" time="0.016"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

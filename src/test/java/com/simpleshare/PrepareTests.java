@@ -20,15 +20,15 @@ public class PrepareTests {
 		if (!em.getTransaction().isActive())
 			em.getTransaction().begin();
 		try {
-			em.createNativeQuery("DELETE FROM USER_ACCOUNT").executeUpdate();
+			em.createNativeQuery("DELETE FROM user_account").executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		try {
-//			em.createNativeQuery("DELETE FROM FILE_DATA").executeUpdate();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		try {
+			em.createNativeQuery("DELETE FROM file_data").executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 //		try {
 //			em.createNativeQuery("DELETE FROM ACCESS_ITEM").executeUpdate();
 //		} catch (Exception e) {
