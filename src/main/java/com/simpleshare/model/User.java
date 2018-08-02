@@ -24,6 +24,8 @@ public class User {
 	private String password;
 	@OneToMany(mappedBy = "owner", cascade=CascadeType.REMOVE)
 	private List<File> files;
+	@OneToMany(mappedBy = "user", cascade=CascadeType.REMOVE)
+	private List<AccessItem> accessItems;
 	
 	public int getId() {
 		return userId;
@@ -63,6 +65,26 @@ public class User {
 		getFiles().remove(file);
 		file.setOwner(null);
 		return file;
+	}
+	
+	public List<AccessItem> getAccessItems() {
+		return accessItems;
+	}
+	
+	public void setAccessItems(List<AccessItem> accessItems) {
+		this.accessItems = accessItems;
+	}
+	
+	public AccessItem addAccessItem(AccessItem accessItem) {
+		getAccessItems().add(accessItem);
+		accessItem.setUser(this);
+		return accessItem;
+	}
+	
+	public AccessItem removeAccessItem(AccessItem accessItem) {
+		getAccessItems().remove(accessItem);
+		accessItem.setUser(null);
+		return accessItem;
 	}
 	
 	@Override
