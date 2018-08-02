@@ -6,6 +6,7 @@
     <persistence-unit name="simpleshare">
 		<class>com.simpleshare.model.User</class>
 		<class>com.simpleshare.model.File</class>
+		<class>com.simpleshare.model.AccessItem</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
@@ -19,6 +20,7 @@
     	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>com.simpleshare.model.User</class>
         <class>com.simpleshare.model.File</class>
+		<class>com.simpleshare.model.AccessItem</class>
 	 	<properties>
 	  		<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
 	  		<property name="javax.persistence.jdbc.url"
