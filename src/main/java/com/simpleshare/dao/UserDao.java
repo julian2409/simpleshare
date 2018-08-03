@@ -39,20 +39,20 @@ public class UserDao {
 				.setParameter("username", name).getSingleResult();
 	}
 	
-	public int saveUser(User user) {
+	public User saveUser(User user) {
 		if(!em.getTransaction().isActive())
 			em.getTransaction().begin();
 		em.persist(user);
 		em.getTransaction().commit();
-		return user.getUserId();
+		return user;
 	}
 	
-	public int deleteUser(User user) {
+	public User deleteUser(User user) {
 		if(!em.getTransaction().isActive())
 			em.getTransaction().begin();
 		em.remove(user);
 		em.getTransaction().commit();
-		return user.getUserId();
+		return user;
 	}
 	
 	public void updateUser(User user) {
@@ -61,10 +61,10 @@ public class UserDao {
 		userInDb.setPassword(user.getPassword());
 	}
 	
-	public int createFile(User user, File file) {
+	public File createFile(User user, File file) {
 		User userInDb = em.find(User.class, user.getUserId());
-		int fileId = userInDb.addFile(file).getFileId();
-		return fileId;
+		file = userInDb.addFile(file);
+		return file;
 	}
 	
 	public List<File> getFiles(User user) {

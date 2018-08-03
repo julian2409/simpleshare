@@ -20,7 +20,7 @@ public class PrepareTests {
 		if (!em.getTransaction().isActive())
 			em.getTransaction().begin();
 		try {
-			em.createNativeQuery("DELETE FROM user_account").executeUpdate();
+			em.createNativeQuery("DELETE FROM ACCESS_ITEM").executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -29,11 +29,11 @@ public class PrepareTests {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		try {
-//			em.createNativeQuery("DELETE FROM ACCESS_ITEM").executeUpdate();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		try {
+			em.createNativeQuery("DELETE FROM user_account").executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		em.getTransaction().commit();
 	}
 }
