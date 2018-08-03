@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.simpleshare.dao.FileDaoTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2018-08-03T18:19:41" hostname="NB170529JSA" time="0.477">
+<testsuite name="com.simpleshare.dao.FileDaoTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2018-08-03T18:43:01" hostname="julian-ThinkPad-E550" time="0.224">
   <properties/>
-  <testcase name="testSaveFile" classname="com.simpleshare.dao.FileDaoTest" time="0.351"/>
-  <testcase name="testGetAllFiles" classname="com.simpleshare.dao.FileDaoTest" time="0.084"/>
-  <testcase name="testGetFile" classname="com.simpleshare.dao.FileDaoTest" time="0.008"/>
-  <testcase name="testGetFilesForUser" classname="com.simpleshare.dao.FileDaoTest" time="0.034"/>
+  <testcase name="testSaveFile" classname="com.simpleshare.dao.FileDaoTest" time="0.01"/>
+  <testcase name="testGetAllFiles" classname="com.simpleshare.dao.FileDaoTest" time="0.169"/>
+  <testcase name="testGetFile" classname="com.simpleshare.dao.FileDaoTest" time="0.017"/>
+  <testcase name="testGetFilesForUser" classname="com.simpleshare.dao.FileDaoTest" time="0.028"/>
   <testcase name="testGetInstance" classname="com.simpleshare.dao.FileDaoTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

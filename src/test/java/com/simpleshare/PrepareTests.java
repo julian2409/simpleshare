@@ -20,7 +20,7 @@ public class PrepareTests {
 		if (!em.getTransaction().isActive())
 			em.getTransaction().begin();
 		try {
-			em.createNativeQuery("DELETE FROM ACCESS_ITEM").executeUpdate();
+			em.createNativeQuery("DELETE FROM access_item").executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
