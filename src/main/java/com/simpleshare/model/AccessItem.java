@@ -33,10 +33,6 @@ public class AccessItem {
 		return accessId;
 	}
 	
-	public void setAccessId(int accessId) {
-		this.accessId = accessId;
-	}
-	
 	public String getPermissions() {
 		return permissions;
 	}
@@ -59,5 +55,11 @@ public class AccessItem {
 	
 	public void setFile(File file) {
 		this.file = file;
-	}	
+	}
+	
+	@Override
+	public String toString() {
+		return "AccessItem [accessId=" + accessId + ", permissions=" + permissions
+				+ ", user=" + user + ", file=" + file + "]";
+	}
 }

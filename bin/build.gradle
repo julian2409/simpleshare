@@ -1,0 +1,24 @@
+
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'org.ajoberstar.grgit' version '2.3.0'
+}
+
+def mysqlUser="root";  // Change this to your database user name
+def mysqlPwd="qV4RB6nz94";   // Change this to your database password
+
+//apply plugin: 'java'
+//apply plugin: 'eclipse'
+//apply plugin: 'org.ajoberstar.grgit'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.jpa', version: '2.7.2'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+    testCompile group: 'org.apache.derby', name: 'derby', version: '10.14.2.0'
+}

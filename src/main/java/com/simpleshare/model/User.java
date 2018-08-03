@@ -27,7 +27,7 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade=CascadeType.REMOVE)
 	private List<AccessItem> accessItems;
 	
-	public int getId() {
+	public int getUserId() {
 		return userId;
 	}
 	

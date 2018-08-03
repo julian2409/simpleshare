@@ -60,4 +60,30 @@ public class File {
 		this.owner = owner;
 	}
 	
+	public List<AccessItem> getAccessItems() {
+		return accessItems;
+	}
+	
+	public void setAccessItems(List<AccessItem> accessItems) {
+		this.accessItems = accessItems;
+	}
+	
+	public AccessItem addAccessItem(AccessItem accessItem) {
+		getAccessItems().add(accessItem);
+		accessItem.setFile(this);
+		return accessItem;
+	}
+	
+	public AccessItem removeAccessItem(AccessItem accessItem) {
+		getAccessItems().remove(accessItem);
+		accessItem.setFile(null);
+		return accessItem;
+	}
+	
+	@Override
+	public String toString() {
+		return "File [fileId=" + fileId + ", path=" + path + ", name=" + name
+				+ ", owner=" + owner + "]";
+	}
+	
 }
