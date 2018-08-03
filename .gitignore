@@ -1,2 +1,5 @@
 /.gradle/
 /build/
+/.project
+/bin/.gitignore
+/bin/main
