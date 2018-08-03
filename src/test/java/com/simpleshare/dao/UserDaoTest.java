@@ -37,8 +37,8 @@ public class UserDaoTest {
 	
 	@Test
 	public void testGetInstance() {
-		UserDao u = UserDao.getInstance();
-		assertNotNull(u);
+		UserDao dao = UserDao.getInstance();
+		assertNotNull(dao);
 	}
 	
 	@Test
@@ -61,8 +61,8 @@ public class UserDaoTest {
 		User user = new User();
 		user.setName("testUser");
 		user.setPassword("secret");
-		int id = dao.saveUser(user);
-		User persistedUser = dao.findUser(id);
+		user = dao.saveUser(user);
+		User persistedUser = dao.findUser(user.getUserId());
 		assertTrue(user.equals(persistedUser));
 	}
 	
@@ -72,8 +72,9 @@ public class UserDaoTest {
 		User user = new User();
 		user.setName("testUserC");
 		user.setPassword("secret");
-		int id = dao.saveUser(user);
-		assertTrue(user.equals(dao.findUser(id)));
+		user = dao.saveUser(user);
+		User persistedUser = dao.findUser(user.getUserId());
+		assertTrue(user.equals(persistedUser));
 	}
 	
 	@Test
@@ -94,7 +95,7 @@ public class UserDaoTest {
 		User user = new User();
 		user.setName("testUserB");
 		user.setPassword("secret");
-		int id = dao.saveUser(user);
+		int id = dao.saveUser(user).getUserId();
 		assertNotNull(dao.findUser(id));
 		dao.deleteUser(user);
 		assertNull(dao.findUser(id));
@@ -106,7 +107,7 @@ public class UserDaoTest {
 		User user = new User();
 		user.setName("original");
 		user.setPassword("original_pwd");
-		int id = dao.saveUser(user);
+		int id = dao.saveUser(user).getUserId();
 		user = dao.findUser(id);
 		user.setPassword("modified_pwd");
 		user.setName("modified");

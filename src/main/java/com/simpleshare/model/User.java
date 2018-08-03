@@ -27,7 +27,7 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade=CascadeType.REMOVE)
 	private List<AccessItem> accessItems;
 	
-	public int getId() {
+	public int getUserId() {
 		return userId;
 	}
 	
@@ -89,7 +89,9 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [userId=" + userId +  ", username=" + username
-				+ ", password=" + password + "]";
+		return "User [userId=" + userId
+				+  ", username=" + username
+				+ ", password=" + password
+				+ "]";
 	}
 }
