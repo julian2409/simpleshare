@@ -82,8 +82,12 @@ public class File {
 	
 	@Override
 	public String toString() {
-		return "File [fileId=" + fileId + ", path=" + path + ", name=" + name
-				+ ", owner=" + owner + "]";
+		return "File ["
+				+ "fileId=" + fileId
+				+ ", path=" + path
+				+ ", name=" + name
+				+ ", owner=" + owner
+				+ "]";
 	}
 	
 }
