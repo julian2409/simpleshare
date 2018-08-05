@@ -13,7 +13,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "access_item", uniqueConstraints={
-		@UniqueConstraint(columnNames = {"user", "file"})
+		@UniqueConstraint(columnNames = {"\"user\"", "file"})
 	})
 public class AccessItem {
 	
@@ -23,7 +23,7 @@ public class AccessItem {
 	private int accessId;
 	private String permissions;
 	@ManyToOne(cascade=CascadeType.MERGE)
-	@JoinColumn(name="user")
+	@JoinColumn(name="\"user\"")
 	private User user;
 	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="file")
@@ -59,7 +59,11 @@ public class AccessItem {
 	
 	@Override
 	public String toString() {
-		return "AccessItem [accessId=" + accessId + ", permissions=" + permissions
-				+ ", user=" + user + ", file=" + file + "]";
+		return "AccessItem ["
+				+ "accessId=" + accessId
+				+ ", permissions=" + permissions
+				+ ", user=" + user
+				+ ", file=" + file
+				+ "]";
 	}
 }
