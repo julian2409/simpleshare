@@ -3,9 +3,10 @@ package com.simpleshare.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import com.simpleshare.model.File;
+import com.simpleshare.model.User;
 
 public class FileDao {
 
@@ -32,19 +33,20 @@ public class FileDao {
 		return file;
 	};
 	
-	public List<File> getAllFiles() {
-		Query q = em.createQuery("select f from File f");
-		List<File> files = q.getResultList();
-		return files;
+	public List<File> getFiles() {
+		TypedQuery<File> q = em.createQuery("select f from File f", File.class);
+		return q.getResultList();
 	}
 	
 	public File getFile(Integer fileId) {
 		return em.find(File.class, fileId);
 	}
 	
-	public List<File> getFilesForUser(int userId) {
-		Query q = em.createQuery("select f from File f where f.owner.userId=:owner");
-		q.setParameter("owner", userId);
+	public List<File> getFiles(User owner) {
+		TypedQuery<File> q = em.createQuery(
+				"select f from File f where f.owner.userId=:owner",
+				File.class);
+		q.setParameter("owner", owner.getUserId());
 		List<File> files = q.getResultList();
 		return files;
 	}
@@ -62,4 +64,5 @@ public class FileDao {
 		em.getTransaction().commit();
 		return file;
 	}
+	
 }

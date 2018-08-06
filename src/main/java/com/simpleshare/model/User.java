@@ -63,7 +63,6 @@ public class User {
 	
 	public File removeFile(File file) {
 		getFiles().remove(file);
-		file.setOwner(null);
 		return file;
 	}
 	

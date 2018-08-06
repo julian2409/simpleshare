@@ -79,7 +79,7 @@ public class FileDaoTest {
 		file.setPath("/home/julian/");
 		file.setOwner(user);
 		dao.saveFile(file);
-		List<File> files = dao.getFilesForUser(user.getUserId());
+		List<File> files = dao.getFiles(user);
 		assertTrue(files.size() > 0);
 	}
 	
@@ -93,7 +93,7 @@ public class FileDaoTest {
 			file.setOwner(UserDao.getInstance().getUsers().get(0));
 			dao.saveFile(file);
 		}
-		List<File> files = dao.getAllFiles();
+		List<File> files = dao.getFiles();
 		assertTrue(files.size() >= 10);
 	}
 	
