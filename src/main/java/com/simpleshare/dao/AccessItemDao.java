@@ -3,7 +3,7 @@ package com.simpleshare.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import com.simpleshare.dao.DaoManager;
 import com.simpleshare.model.AccessItem;
@@ -27,7 +27,8 @@ public class AccessItemDao {
 	}
 	
 	public List<AccessItem> getAccessItems() {
-		Query q = em.createQuery("select a from AccessItem a");
+		TypedQuery<AccessItem> q = em.createQuery(
+				"select a from AccessItem a", AccessItem.class);
 		List<AccessItem> accessItems = q.getResultList();
 		return accessItems;
 	}
@@ -37,15 +38,17 @@ public class AccessItemDao {
 	}
 	
 	public List<AccessItem> getAccessItem(User user) {
-		return (List<AccessItem>) em.createQuery("select a from accessitem a"
-				+ " where a.user.userId=:userId")
-				.setParameter("userId", user.getUserId());
+		TypedQuery<AccessItem> q = em.createQuery(
+				"select a from AccessItem a where a.user.userId=:userId",
+				AccessItem.class);
+		return q.setParameter("userId", user.getUserId()).getResultList();
 	}
 	
 	public List<AccessItem> getAccessItem(File file) {
-		return (List<AccessItem>) em.createQuery("select a from accessitem a"
-				+ " where a.file.fileId=:fileId")
-				.setParameter("userId", file.getFileId());
+		TypedQuery<AccessItem> q = em.createQuery(
+				"select a from AccessItem a"
+				+ " where a.file.fileId=:fileId", AccessItem.class);
+				return q.setParameter("fileId", file.getFileId()).getResultList();
 	}
 	
 	public AccessItem saveAccessItem(AccessItem accessItem) {

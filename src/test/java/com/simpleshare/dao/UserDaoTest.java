@@ -14,6 +14,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.simpleshare.PrepareTests;
+import com.simpleshare.model.AccessItem;
+import com.simpleshare.model.File;
 import com.simpleshare.model.User;
 
 public class UserDaoTest {
@@ -114,5 +116,81 @@ public class UserDaoTest {
 		dao.updateUser(user);
 		assertEquals(dao.findUser(id).getUserName(), "modified");
 		assertEquals(dao.findUser(id).getPassword(), "modified_pwd");
+	}
+	
+	@Test
+	public void testAddFile() {
+		UserDao dao = UserDao.getInstance();
+		FileDao fDao = FileDao.getInstance();
+		User user = new User();
+		user.setName("testUser01");
+		user.setPassword("secret");
+		dao.saveUser(user);
+		File file = new File();
+		file.setName("testFile01.txt");
+		file.setPath("/home/julian/");
+		dao.addFile(user, file);
+		assertTrue(user.equals(fDao.getFile(file.getFileId()).getOwner()));
+	}
+	
+	@Test
+	public void testRemoveFile() {
+		UserDao dao = UserDao.getInstance();
+		FileDao fDao = FileDao.getInstance();
+		User user = new User();
+		user.setName("testUser02");
+		user.setPassword("secret");
+		dao.saveUser(user);
+		File file = new File();
+		file.setName("testFile02.txt");
+		file.setPath("/home/julian/");
+		file.setOwner(user);
+		dao.addFile(user, file);
+		assertTrue(file.equals(fDao.getFile(file.getFileId())));
+		dao.removeFile(file);
+		assertNull(fDao.getFile(file.getFileId()));
+	}
+	
+	@Test
+	public void testAddAccessItem() {
+		UserDao dao = UserDao.getInstance();
+		FileDao fDao = FileDao.getInstance();
+		User user = new User();
+		user.setName("testUser001");
+		user.setPassword("secret");
+		dao.saveUser(user);
+		File file = new File();
+		file.setPath("/home/julian/");
+		file.setName("testFile001.txt");
+		file.setOwner(user);
+		fDao.saveFile(file);
+		AccessItem accessItem = new AccessItem();
+		accessItem.setPermissions("r-x");
+		dao.addAccessItem(user, file, accessItem);
+		assertTrue(accessItem.equals(AccessItemDao.getInstance()
+				.getAccessItem(accessItem.getAccessId())));
+	}
+	
+	@Test
+	public void testRemoveAccessItem() {
+		UserDao dao = UserDao.getInstance();
+		FileDao fDao = FileDao.getInstance();
+		User user = new User();
+		user.setName("testUser002");
+		user.setPassword("secret");
+		dao.saveUser(user);
+		File file = new File();
+		file.setPath("/home/julian/");
+		file.setName("testFile002.txt");
+		file.setOwner(user);
+		fDao.saveFile(file);
+		AccessItem accessItem = new AccessItem();
+		accessItem.setPermissions("rwx");
+		dao.addAccessItem(user, file, accessItem);
+		assertTrue(accessItem.equals(AccessItemDao.getInstance()
+				.getAccessItem(accessItem.getAccessId())));
+		dao.removeAccessItem(accessItem);
+		assertNull(AccessItemDao.getInstance()
+				.getAccessItem(accessItem.getAccessId()));
 	}
 }
