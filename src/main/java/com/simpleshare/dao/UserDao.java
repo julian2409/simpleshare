@@ -35,7 +35,8 @@ public class UserDao {
 	}
 	
 	public User findUserByName(String name) {
-		return (User) em.createQuery("select u from User u where u.username=:username")
+		return (User) em.createQuery("select u from User u"
+				+ " where u.username=:username")
 				.setParameter("username", name).getSingleResult();
 	}
 	

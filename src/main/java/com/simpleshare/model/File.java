@@ -26,7 +26,7 @@ public class File {
 	private int fileId;
 	private String path;
 	private String name;
-	@ManyToOne(cascade=CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name="owner")
 	private User owner;
 	@OneToMany(mappedBy = "file", cascade=CascadeType.REMOVE)
