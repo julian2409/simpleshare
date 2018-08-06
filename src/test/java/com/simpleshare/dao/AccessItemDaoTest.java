@@ -57,7 +57,7 @@ public class AccessItemDaoTest {
 			user.addAccessItem(accessItem);
 			uDao.updateUser(user);
 			file.addAccessItem(accessItem);
-			fDao.update(file);
+			fDao.updateFile(file);
 			List<AccessItem> accessItems = dao.getAccessItems();
 			assertTrue(accessItems.size() >= 10);
 			System.out.println(accessItem.getAccessId());
