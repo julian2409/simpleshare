@@ -49,5 +49,17 @@ public class FileDao {
 		return files;
 	}
 	
+	public void updateFile(File file) {
+		File fileInDb = em.find(File.class, file.getFileId());
+		fileInDb.setPath(file.getPath());
+		fileInDb.setName(file.getName());
+	}
 	
+	public File deleteFile(File file) {
+		if (!em.getTransaction().isActive())
+			em.getTransaction().begin();
+		em.remove(file);
+		em.getTransaction().commit();
+		return file;
+	}
 }

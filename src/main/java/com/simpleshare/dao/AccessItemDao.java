@@ -63,7 +63,7 @@ public class AccessItemDao {
 	
 	public AccessItem deleteAccessItem(AccessItem accessItem) {
 		if (!em.getTransaction().isActive())
-			em.getTransaction().isActive();
+			em.getTransaction().begin();
 		em.remove(accessItem);
 		em.getTransaction().commit();
 		return accessItem;

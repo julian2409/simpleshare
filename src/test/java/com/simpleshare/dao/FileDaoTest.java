@@ -1,6 +1,7 @@
 package com.simpleshare.dao;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -94,5 +95,42 @@ public class FileDaoTest {
 		}
 		List<File> files = dao.getAllFiles();
 		assertTrue(files.size() >= 10);
+	}
+	
+	@Test
+	public void testUpdateFile() {
+		FileDao dao = FileDao.getInstance();
+		UserDao uDao = UserDao.getInstance();
+		File file = new File();
+		file.setPath("/home/julian/");
+		file.setName("test01.txt");
+		User user = new User();
+		user.setName("testUser01");
+		user.setPassword("secret");
+		uDao.saveUser(user);
+		file.setOwner(user);
+		dao.saveFile(file);
+		file = dao.getFile(file.getFileId());
+		file.setName("updatedTestFile.txt");
+		dao.updateFile(file);
+		assertTrue(dao.getFile(file.getFileId()).getName().equals("updatedTestFile.txt"));
+	}
+	
+	@Test
+	public void testDeleteFile() {
+		FileDao dao = FileDao.getInstance();
+		UserDao uDao = UserDao.getInstance();
+		File file = new File();
+		file.setPath("/home/julian/");
+		file.setName("testFile001.txt");
+		User user = new User();
+		user.setName("testUser001");
+		user.setPassword("secret");
+		uDao.saveUser(user);
+		file.setOwner(user);
+		dao.saveFile(file);
+		assertNotNull(dao.getFile(file.getFileId()));
+		dao.deleteFile(file);
+		assertNull(dao.getFile(file.getFileId()));
 	}
 }
